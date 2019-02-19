@@ -1,15 +1,27 @@
 package com.sugata.mycredibleinfo.remote;
 
-import com.sugata.mycredibleinfo.LoginPOJO.LoginSignupData;
-import com.sugata.mycredibleinfo.LoginPOJO.ServerTest;
-import com.sugata.mycredibleinfo.LoginPOJO.User;
+import com.sugata.mycredibleinfo.EduDetailsClasses.EducationDetails;
+import com.sugata.mycredibleinfo.EduDetailsClasses.EducationDetailsData;
+import com.sugata.mycredibleinfo.LoginClasses.LoginSignupData;
+import com.sugata.mycredibleinfo.LoginClasses.ServerTest;
+import com.sugata.mycredibleinfo.LoginClasses.User;
+import com.sugata.mycredibleinfo.PerDetailsClasses.PersonalDetails;
+import com.sugata.mycredibleinfo.PerDetailsClasses.PersonalDetailsData;
+import com.sugata.mycredibleinfo.ProfDetailsClasses.ProfessionalDetails;
+import com.sugata.mycredibleinfo.ProfDetailsClasses.ProfessionalDetailsData;
+import com.sugata.mycredibleinfo.ProfileImgClasses.StatusMessage;
+import com.sugata.mycredibleinfo.ProfileImgClasses.Photo;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface UserService {
@@ -23,7 +35,7 @@ public interface UserService {
     @POST("user/signup")
     Call<LoginSignupData> addUser(@Body User user);
 
-    /*@GET("user/personaldetail/{id}")
+    @GET("user/personaldetail/{id}")
     Call<PersonalDetailsData> getPersonalDetails(@Path("id") int id);
 
     @POST("user/personaldetail/{id}")
@@ -50,6 +62,13 @@ public interface UserService {
     @DELETE("user/educationdetail/{id}")
     Call<StatusMessage> deleteEducationalDetails(@Path("id") int id);
 
+    @GET("user/educationdetail/certificate/{id}")
+    Call<byte[]> getCertificates(@Path("id") int id);
+
+    @Multipart
+    @POST("user/educationdetail/certificate")
+    Call<StatusMessage> setCertificates(@Part MultipartBody.Part photo, @Part("uid") int id);
+
     @GET("user/professionaldetail/{id}")
     Call<ProfessionalDetailsData> getProfessionalDetails(@Path("id") int id);
 
@@ -60,5 +79,5 @@ public interface UserService {
     Call<ProfessionalDetailsData> updateProfessionalDetails(@Path("id") int id, @Body ProfessionalDetails professionalDetails);
 
     @DELETE("user/professionaldetail/{id}")
-    Call<StatusMessage> deleteProfessionalDetails(@Path("id") int id);*/
+    Call<StatusMessage> deleteProfessionalDetails(@Path("id") int id);
 }

@@ -1,4 +1,4 @@
-package com.sugata.mycredibleinfo.LoginPOJO;
+package com.sugata.mycredibleinfo.LoginClasses;
 
 public class Data {
     private String id;

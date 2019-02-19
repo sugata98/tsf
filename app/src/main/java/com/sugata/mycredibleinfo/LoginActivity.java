@@ -9,9 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.sugata.mycredibleinfo.LoginPOJO.LoginSignupData;
-import com.sugata.mycredibleinfo.LoginPOJO.ServerTest;
-import com.sugata.mycredibleinfo.LoginPOJO.User;
+import com.sugata.mycredibleinfo.LoginClasses.LoginSignupData;
+import com.sugata.mycredibleinfo.LoginClasses.ServerTest;
+import com.sugata.mycredibleinfo.LoginClasses.User;
 import com.sugata.mycredibleinfo.UserDetails.PersonalDetailsActivity;
 import com.sugata.mycredibleinfo.remote.APIUtils;
 import com.sugata.mycredibleinfo.remote.UserService;

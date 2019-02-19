@@ -1,7 +1,6 @@
-package com.sugata.mycredibleinfo.LoginPOJO;
+package com.sugata.mycredibleinfo.EduDetailsClasses;
 
-public class LoginSignupData {
-
+public class EducationDetailsData {
     private Data data;
 
     public Data getData() {
@@ -14,7 +13,7 @@ public class LoginSignupData {
 
     @Override
     public String toString() {
-        return "LoginSignupData{" +
+        return "EducationDetailsData{" +
                 "data=" + data +
                 '}';
     }

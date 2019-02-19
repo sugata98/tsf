@@ -43,7 +43,7 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/signup_button"
+        android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/password"
@@ -52,10 +52,10 @@
         android:background="#139ED1"
         android:textColor="#ffffff"
         android:textSize="16sp"
-        android:text="Sign Up" />
+        android:text="Login" />
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/signup_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -66,6 +66,6 @@
         android:textColor="#ffffff"
         android:textSize="16sp"
         android:layout_marginEnd="10dp"
-        android:text="Login" />
+        android:text="SignUp" />
 
 </RelativeLayout>
