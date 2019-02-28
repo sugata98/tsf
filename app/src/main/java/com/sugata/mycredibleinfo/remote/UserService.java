@@ -1,5 +1,7 @@
 package com.sugata.mycredibleinfo.remote;
 
+import android.telephony.mbms.FileInfo;
+
 import com.sugata.mycredibleinfo.EduDetailsClasses.EducationDetails;
 import com.sugata.mycredibleinfo.EduDetailsClasses.EducationDetailsData;
 import com.sugata.mycredibleinfo.LoginClasses.LoginSignupData;
@@ -14,6 +16,7 @@ import com.sugata.mycredibleinfo.ProfileImgClasses.Photo;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -67,7 +70,7 @@ public interface UserService {
 
     @Multipart
     @POST("user/educationdetail/certificate")
-    Call<StatusMessage> setCertificates(@Part MultipartBody.Part photo, @Part("uid") int id);
+    Call<ResponseBody> setCertificates(@Part MultipartBody.Part photo, @Part("uid") RequestBody id);
 
     @GET("user/professionaldetail/{id}")
     Call<ProfessionalDetailsData> getProfessionalDetails(@Path("id") int id);

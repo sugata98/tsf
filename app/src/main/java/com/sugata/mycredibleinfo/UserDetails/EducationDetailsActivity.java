@@ -17,6 +17,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.mbms.FileInfo;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,7 @@ import java.io.File;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -82,6 +84,7 @@ public class EducationDetailsActivity extends AppCompatActivity {
                     Uri.parse("package:" + getPackageName()));
             finish();
             startActivity(intent);
+            Toast.makeText(this, "Give Storage Permission to this app!", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -142,18 +145,19 @@ public class EducationDetailsActivity extends AppCompatActivity {
 
         File file = new File(picturePath);
         RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-        MultipartBody.Part photo = MultipartBody.Part.createFormData("photo",file.getName(),requestBody);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("photo",file.getName(),requestBody);
+        RequestBody userid = RequestBody.create(MultipartBody.FORM, String.valueOf(userId));
 
-        Call<StatusMessage> call = userService.setCertificates(photo,userId);
-        call.enqueue(new Callback<StatusMessage>() {
+        Call<ResponseBody> call = userService.setCertificates(part,userid);
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<StatusMessage> call, Response<StatusMessage> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(EducationDetailsActivity.this, "Certificate set successfully", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
-            public void onFailure(Call<StatusMessage> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(EducationDetailsActivity.this, "Update Personal details Failed: "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
