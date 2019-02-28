@@ -77,16 +77,6 @@ public class EducationDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_education_details);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                    Uri.parse("package:" + getPackageName()));
-            finish();
-            startActivity(intent);
-            Toast.makeText(this, "Give Storage Permission to this app!", Toast.LENGTH_LONG).show();
-            return;
-        }
 
         organizationEditText = findViewById(R.id.organization_edit_text);
         degreeEditText = findViewById(R.id.degree_edit_text);
